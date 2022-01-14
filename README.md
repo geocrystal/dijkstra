@@ -1,6 +1,8 @@
 # dijkstra
 
-TODO: Write a description here
+Dijkstra's Algorithm in Crystal.
+
+[Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks.
 
 ## Installation
 
@@ -9,7 +11,7 @@ TODO: Write a description here
    ```yaml
    dependencies:
      dijkstra:
-       github: your-github-user/dijkstra
+       github: geocrystal/dijkstra
    ```
 
 2. Run `shards install`
@@ -18,17 +20,28 @@ TODO: Write a description here
 
 ```crystal
 require "dijkstra"
+
+gr = Dijkstra::Graph(Char).new(directed: true)
+
+gr.add_edge('a', 'b', 7)
+gr.add_edge('a', 'c', 9)
+gr.add_edge('a', 'f', 14)
+gr.add_edge('b', 'c', 10)
+gr.add_edge('b', 'd', 15)
+gr.add_edge('c', 'd', 11)
+gr.add_edge('c', 'f', 2)
+gr.add_edge('d', 'e', 6)
+gr.add_edge('e', 'f', 9)
+
+gr.shortest_path('a', 'e')
+
+# Directed   : a -> c(9) -> d(20) -> e(26)
+# Undirected : a -> c(9) -> f(11) -> e(20)
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/dijkstra/fork>)
+1. Fork it (<https://github.com/geocrystal/dijkstra/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -36,4 +49,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Anton Maminov](https://github.com/your-github-user) - creator and maintainer
+- [Anton Maminov](https://github.com/mamantoha) - creator and maintainer

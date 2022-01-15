@@ -21,6 +21,8 @@ Dijkstra's Algorithm in Crystal.
 
 ## Usage
 
+![image](https://github.com/geocrystal/dijkstra/blob/main/samples/image.png?raw=true)
+
 ```crystal
 require "dijkstra"
 

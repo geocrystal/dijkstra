@@ -35,7 +35,7 @@ module Dijkstra
       @dist[source] = 0
       q = @vertices.dup
 
-      while q.any?
+      while !q.empty?
         u = @dist.select(q.to_a).min[0]
         q.delete(u)
 

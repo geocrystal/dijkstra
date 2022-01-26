@@ -36,7 +36,7 @@ module Dijkstra
       q = @vertices.dup
 
       while !q.empty?
-        u = @dist.select(q.to_a).min[0]
+        u = @dist.select(q).min[0]
         q.delete(u)
 
         break if @dist[u] == @infinity

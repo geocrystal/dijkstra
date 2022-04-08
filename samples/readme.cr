@@ -12,6 +12,6 @@ gr.add_edge('c', 'f', 2)
 gr.add_edge('d', 'e', 6)
 gr.add_edge('e', 'f', 9)
 
-p! gr.shortest_path('a', 'e')
+puts gr.shortest_path('a', 'e')
 # Undirected : a -> c(9) -> f(11) -> e(20)
 # Directed   : a -> c(9) -> d(20) -> e(26)

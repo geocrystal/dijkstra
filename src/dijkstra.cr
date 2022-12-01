@@ -1,3 +1,5 @@
+require "priority-queue"
+
 module Dijkstra
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 
@@ -23,32 +25,36 @@ module Dijkstra
       @vertices << source << target
     end
 
+    # Dijkstra's algorithm using a priority queue
+    #
     # Based of wikipedia's pseudocode: https://en.wikipedia.org/wiki/Dijkstra's_algorithm
     private def dijkstra(source : T)
       raise Dijkstra::Error.new("Missing source node: '#{source}'") unless @vertices.includes?(source)
 
-      @vertices.each do |i|
-        @dist[i] = @infinity
-        @prev[i] = nil
+      q = Priority::Queue(T).new
+
+      @vertices.each do |v|
+        @dist[v] = @infinity
+        @prev[v] = nil
+
+        q.push(@dist[v], v)
       end
 
       @dist[source] = 0
-      q = @vertices.dup
 
-      while !q.empty?
-        u = @dist.select(q).min[0]
-        q.delete(u)
+      while !q.empty?   # The main loop
+        u = q.pop.value # Remove and return best vertex
 
         break if @dist[u] == @infinity
 
-        next unless @neighbours.has_key?(u)
-
-        @neighbours[u].each do |v, weight|
+        @neighbours[u].each do |v, weight| # Go through all v neighbors of u
           alt = @dist[u] + weight
 
           if alt < @dist[v]
             @dist[v] = alt
             @prev[v] = u
+
+            q.push(alt, v) # decrease priority
           end
         end
       end

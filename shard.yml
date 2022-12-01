@@ -6,6 +6,11 @@ authors:
 
 crystal: ">= 1.4.0"
 
+dependencies:
+  priority-queue:
+    github: spider-gazelle/priority-queue
+    branch: master
+
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba

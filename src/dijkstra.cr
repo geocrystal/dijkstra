@@ -34,8 +34,8 @@ module Dijkstra
       q = Priority::Queue(T).new
 
       @vertices.each do |v|
-        @dist[v] = @infinity
-        @prev[v] = nil
+        @dist[v] = @infinity # Unknown distance from source to v
+        @prev[v] = nil       # Predecessor of v
 
         q.push(@dist[v], v)
       end

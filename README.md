@@ -3,7 +3,7 @@
 [![Crystal CI](https://github.com/geocrystal/dijkstra/actions/workflows/crystal.yml/badge.svg)](https://github.com/geocrystal/dijkstra/actions/workflows/crystal.yml)
 [![License](https://img.shields.io/github/license/geocrystal/dijkstra.svg)](https://github.com/geocrystal/dijkstra/blob/master/LICENSE)
 
-Dijkstra's Algorithm in Crystal.
+Dijkstra's algorithm using a priority queue in Crystal.
 
 [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks.
 

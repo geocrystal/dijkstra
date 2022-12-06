@@ -1,4 +1,4 @@
-require "priority-queue"
+require "./dijkstra/priority_queue"
 
 module Dijkstra
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
@@ -31,19 +31,19 @@ module Dijkstra
     private def dijkstra(source : T)
       raise Dijkstra::Error.new("Missing source node: '#{source}'") unless @vertices.includes?(source)
 
-      q = Priority::Queue(T).new
+      queue = PriorityQueue(T).new
 
       @vertices.each do |v|
         @dist[v] = @infinity # Unknown distance from source to v
         @prev[v] = nil       # Predecessor of v
 
-        q.push(@dist[v], v)
+        queue.add_with_priority(v, @dist[v])
       end
 
       @dist[source] = 0
 
-      while !q.empty?   # The main loop
-        u = q.pop.value # Remove and return best vertex
+      while !queue.empty?     # The main loop
+        u = queue.extract_min # Remove and return best vertex
 
         break if @dist[u] == @infinity
 
@@ -54,7 +54,7 @@ module Dijkstra
             @dist[v] = alt
             @prev[v] = u
 
-            q.push(alt, v) # decrease priority
+            queue.decrease_priority(v, alt)
           end
         end
       end

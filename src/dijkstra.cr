@@ -37,6 +37,8 @@ module Dijkstra
 
       return if source == @current_source
 
+      @current_source = source
+
       q = Priority::Queue(T).new
 
       @vertices.each do |v|

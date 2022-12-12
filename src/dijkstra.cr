@@ -45,7 +45,7 @@ module Dijkstra
       while !q.empty?   # The main loop
         u = q.pop.value # Remove and return best vertex
 
-        break if @dist[u] == @infinity
+        next if @dist[u] == @infinity
 
         @neighbours[u].each do |v, weight| # Go through all v neighbors of u
           alt = @dist[u] + weight

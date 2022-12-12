@@ -7,6 +7,8 @@ module Dijkstra
   end
 
   class Graph(T)
+    @current_source : T?
+
     def initialize(@directed = false)
       # {node1 => {edge1 => weight, edge2 => weight}, node2 => {...}, ...}
       @neighbours = Hash(T, Hash(T, Int32)).new { |h, k| h[k] = Hash(T, Int32).new }
@@ -19,6 +21,8 @@ module Dijkstra
     end
 
     def add_edge(source : T, target : T, weight : Int32)
+      @current_source = nil if @current_source
+
       @neighbours[source][target] = weight
       @neighbours[target][source] = weight unless @directed
 
@@ -30,6 +34,8 @@ module Dijkstra
     # Based of wikipedia's pseudocode: https://en.wikipedia.org/wiki/Dijkstra's_algorithm
     private def dijkstra(source : T)
       raise Dijkstra::Error.new("Missing source node: '#{source}'") unless @vertices.includes?(source)
+
+      return if source == @current_source
 
       q = Priority::Queue(T).new
 

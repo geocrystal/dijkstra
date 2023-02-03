@@ -94,7 +94,7 @@ module Dijkstra
 
     # Full shortest route to a node
     private def path_to(target, path = [] of T) : Array(T)
-      if (node = @prev[target])
+      if node = @prev[target]
         path_to(node, path)
       end
 

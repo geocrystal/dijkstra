@@ -11,7 +11,7 @@ module Dijkstra
 
     def initialize(@directed = false)
       # {node1 => {edge1 => weight, edge2 => weight}, node2 => {...}, ...}
-      @neighbours = Hash(T, Hash(T, Int32)).new { |h, k| h[k] = Hash(T, Int32).new }
+      @neighbours = Hash(T, Hash(T, Int32)).new { |hsh, key| hsh[key] = Hash(T, Int32).new }
 
       @vertices = Set(T).new
       @infinity = Int32::MAX

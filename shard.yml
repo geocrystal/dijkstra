@@ -11,9 +11,4 @@ dependencies:
     github: spider-gazelle/priority-queue
     branch: master
 
-development_dependencies:
-  ameba:
-    github: crystal-ameba/ameba
-    branch: master
-
 license: MIT

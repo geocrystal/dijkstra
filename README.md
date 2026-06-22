@@ -1,6 +1,7 @@
 # dijkstra
 
 [![Crystal CI](https://github.com/geocrystal/dijkstra/actions/workflows/crystal.yml/badge.svg)](https://github.com/geocrystal/dijkstra/actions/workflows/crystal.yml)
+[![GitHub release](https://img.shields.io/github/release/geocrystal/dijkstra.svg)](https://github.com/geocrystal/dijkstra/releases)
 [![License](https://img.shields.io/github/license/geocrystal/dijkstra.svg)](https://github.com/geocrystal/dijkstra/blob/master/LICENSE)
 
 Dijkstra's algorithm using a priority queue in Crystal.

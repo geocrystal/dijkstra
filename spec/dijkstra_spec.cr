@@ -13,6 +13,16 @@ describe Dijkstra::Graph do
     {'e', 'f', 9},
   ]
 
+  describe "#add_edge" do
+    it "should raise exception when edge weight is negative" do
+      gr = Dijkstra::Graph(Char).new
+
+      expect_raises Dijkstra::Error, "Negative edge weight: -1" do
+        gr.add_edge('a', 'b', -1)
+      end
+    end
+  end
+
   describe "#shortest_path" do
     it "should find shortests directed path" do
       gr = Dijkstra::Graph(Char).new(directed: true)

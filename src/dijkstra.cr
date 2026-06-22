@@ -21,6 +21,8 @@ module Dijkstra
     end
 
     def add_edge(source : T, target : T, weight : Int32)
+      raise Dijkstra::Error.new("Negative edge weight: #{weight}") if weight < 0
+
       @current_source = nil if @current_source
 
       @neighbours[source][target] = weight
@@ -42,13 +44,11 @@ module Dijkstra
       q = Priority::Queue(T).new
 
       @vertices.each do |v|
-        @dist[v] = @infinity # Unknown distance from source to v
-        @prev[v] = nil       # Predecessor of v
+        @dist[v] = v == source ? 0 : @infinity # Unknown distance from source to v
+        @prev[v] = nil                         # Predecessor of v
 
         q.push(@dist[v], v)
       end
-
-      @dist[source] = 0
 
       while !q.empty?   # The main loop
         u = q.pop.value # Remove and return best vertex

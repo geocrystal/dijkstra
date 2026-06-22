@@ -53,7 +53,7 @@ describe Dijkstra::Graph do
 
       gr.add_edge('x', 'y', 1)
 
-      gr.shortest_path('a', 'x').should eq(nil)
+      gr.shortest_path('a', 'x').should be_nil
     end
 
     it "should raise exception when source node not found" do

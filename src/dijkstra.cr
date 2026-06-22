@@ -87,8 +87,6 @@ module Dijkstra
 
       if @dist[target] != @infinity
         {@dist[target], path_to(target)}
-      else
-        nil
       end
     end
 
